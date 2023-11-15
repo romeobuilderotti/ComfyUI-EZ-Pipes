@@ -15,7 +15,7 @@ create_pipe_classes("Foo", {
 })
 ```
 
-- Input pipes contain editable fields that can be collapsed into input slots.
+- Input pipe nodes contain editable fields that can be collapsed into input slots.
 - Edit pipes contain both input and output slots. Inputs replace pipe contents if provided.
 - Output pipes contain only output slots.
 
