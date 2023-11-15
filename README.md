@@ -2,11 +2,28 @@
 
 <img src="examples/workflow.png"/>
 
-ComfyUI-EZ-Pipes is a set of custom pipe nodes for ComfyUI. It provides a set of Input/Edit/Output nodes for each pipe type. **You can easily add your own pipe types by editing `custom_pipes.py`.**
+ComfyUI-EZ-Pipes is a set of custom pipe nodes for ComfyUI. It provides a set of Input/Edit/Output nodes for each pipe type.
+
+**You can easily add your own pipe types by editing `custom_pipes.py` like so:**
+```python
+create_pipe_classes("Foo", {
+    "model": ("MODEL", ),
+    "positive": ("CONDITIONING", ),
+    "negative": ("CONDITIONING", ),
+    "steps": ("INT", {"default": 20}),
+    "cfg": ("FLOAT", {"default": 8.0, "min": 0.0, "max": 100.0}),
+})
+```
+
+- Input pipes contain editable fields that can be collapsed into input slots.
+- Edit pipes contain both input and output slots. Inputs replace pipe contents if provided.
+- Output pipes contain only output slots.
 
 Pipes provided by default:
 - `SamplerPipe(step, cfg, sampler_name, scheduler, seed)`
 - `ModelPipe(model, clip, vae, positive, negative)`
+
+You can collapse pipe nodes and use reroute nodes for convenience.
 
 ## Installation
 
